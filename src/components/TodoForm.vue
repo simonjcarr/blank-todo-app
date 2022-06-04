@@ -1,15 +1,14 @@
 <script>
 import { ref } from 'vue'
+import { useTodoStore } from '@/stores/todos'
 export default {
-  setup(props, context) {
+  setup() {
+    const todosStore = useTodoStore()
     let title = ref("")
     let description = ref("")
     
     const onClick = () => {
-      context.emit("add", {
-        title: title.value,
-        description: description.value,
-      })
+      todosStore.addTodo({title: title.value, description: description.value})
       title.value = ""
       description.value = ""
     }
@@ -17,8 +16,6 @@ export default {
     return { onClick, title, description }
   }
 }
-
-
 </script>
 
 <template>
