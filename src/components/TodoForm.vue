@@ -17,8 +17,6 @@ export default {
     return { onClick, title, description }
   }
 }
-
-
 </script>
 
 <template>
@@ -30,7 +28,11 @@ export default {
       <textarea v-model="description" rows="3" placeholder="Description <optional>" class="p-2 w-full rounded"></textarea>
     </div>
     <div class="mt-2">
-      <button @click="onClick" class="rounded bg-gray-900 border-gray-900 border-2 text-gray-50 font-bold p-2 hover:bg-transparent hover:text-gray-900">Submit</button>
+      <button 
+      @click="onClick" 
+      class="rounded bg-gray-900 border-gray-900 border-2 text-gray-50 font-bold p-2 hover:bg-transparent hover:text-gray-900">
+      Submit
+      </button>
     </div>
   </div>
 </template>
