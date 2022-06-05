@@ -33,5 +33,16 @@ export const useTodoStore = defineStore('todos', {
       const todo = this.todos.find(todo => todo.id === id)
       todo.completed = !todo.completed
     }
+  },
+  getters: {
+    getTodoCount() {
+      return this.todos.length
+    },
+    getCompletedCount() {
+      return this.todos.filter(todo => todo.completed).length
+    },
+    getNotCompletedCount() {
+      return this.todos.filter(todo => !todo.completed).length
+    }
   }
 })

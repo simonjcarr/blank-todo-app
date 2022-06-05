@@ -1,18 +1,20 @@
 <template>
   <div class="flex space-x-2">
-    <div class="font-bold text-sm">Total: {{todosStore.todos.length}}</div>
-    <div class="font-bold text-sm">Complete: {{todosStore.todos.filter(t => t.completed).length}}</div>
-    <div class="font-bold text-sm">ToDo: {{todosStore.todos.filter(t => !t.completed).length}}</div>
+    <div class="font-bold text-sm">Total: {{ getTodoCount}}</div>
+    <div class="font-bold text-sm">Complete: {{getCompletedCount}}</div>
+    <div class="font-bold text-sm">ToDo: {{getNotCompletedCount}}</div>
   </div>
 </template>
 
 <script>
 import { useTodoStore } from '@/stores/todos'
+import { storeToRefs } from 'pinia'
 
 export default {
   setup() {
     const todosStore = useTodoStore()
-    return { todosStore }
+    let {getTodoCount, getCompletedCount, getNotCompletedCount} = storeToRefs(todosStore)
+    return { getTodoCount, getCompletedCount, getNotCompletedCount }
   }
 }
 </script>
